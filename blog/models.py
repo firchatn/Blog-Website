@@ -22,7 +22,7 @@ class Article(models.Model):
 	autor = models.ForeignKey(User, on_delete=models.CASCADE)
 	title = models.CharField(max_length=20)
 	desc = models.CharField(max_length=300)
-	aboutnow = models.CharField(max_length=3000)
+	aboutnow = models.TextField()
 	img = models.ImageField(upload_to='upload/')
 	post_date = models.DateTimeField('date published', auto_now_add=True, auto_now=False)
 	def __str__(self):
