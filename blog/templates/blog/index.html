@@ -17,11 +17,11 @@
 
 				<!-- Header -->
 					<header id="header">
-						<h1><a href="#">Future Imperfect</a></h1>
+						<h1><a href="#">Blog News</a></h1>
 						<nav class="links">
 							<ul>
 								<li><a href="#">Acueill</a></li>
-								<li><a href="#">Login</a></li>
+								<li><a href="/admin/">Login</a></li>
 								<li><a href="#">Contact</a></li>
 							</ul>
 						</nav>
@@ -88,19 +88,21 @@
 					<div id="main">
 
 						<!-- Post -->
+
+						{% for i in article %}
 							<article class="post">
 								<header>
 									<div class="title">
-										<h2><a href="#">Magna sed adipiscing</a></h2>
-										<p>Lorem ipsum dolor amet nullam consequat etiam feugiat</p>
+										<h2><a href="#">{{ i.title }}</a></h2>
+										<p>{{ i.desc }} </p>
 									</div>
 									<div class="meta">
-										<time class="published" datetime="2015-11-01">November 1, 2015</time>
-										<a href="#" class="author"><span class="name">Jane Doe</span><img src="images/avatar.jpg" alt="" /></a>
+										<time class="published" datetime="2015-11-01"> {{ i.post_date }}</time>
+										<a href="#" class="author"><span class="name"> {{ i.autor.name }} </span><img src="images/avatar.jpg" alt="" /></a>
 									</div>
 								</header>
-								<a href="#" class="image featured"><img src="{% static 'blog/images/pic01.jpg' %}" alt="" /></a>
-								<p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at. Phasellus sed ultricies mi non congue ullam corper. Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
+								<a href="#" class="image featured"><img src="{{ i.img.url }}" alt="" /></a>
+								<p>  {{  i.aboutnow }} .</p>
 								<footer>
 									
 									<ul class="stats">
@@ -109,14 +111,18 @@
 									</ul>
 								</footer>
 							</article>
-
+							{% endfor %}
 						<!-- Post -->
 
 
 						<!-- Pagination -->
 							<ul class="actions pagination">
-								<li><a href="" class="disabled button big previous">Previous Page</a></li>
-								<li><a href="#" class="button big next">Next Page</a></li>
+							{% if article.has_previous %}
+								<li><a href="?page={{ article.previous_page_number }}">Previous Page</a></li>
+								{% endif %}
+								 {% if article.has_next %}
+								<li><a href="?page={{ article.next_page_number }}"class="button big next">Next Page</a></li>
+								{% endif %}
 							</ul>
 
 					</div>
@@ -126,16 +132,17 @@
 						<!-- Posts List -->
 							<section>
 								<ul class="posts">
+								{% for i in toplast %}
 									<li>
 										<article>
 											<header>
-												<h3><a href="#">Lorem ipsum fermentum ut nisl vitae</a></h3>
-												<time class="published" datetime="2015-10-20">October 20, 2015</time>
+												<h3><a href="#">{{ i.title }}</a></h3>
+												<time class="published" datetime="2015-10-20"> {{ i.post_date }}</time>
 											</header>
-											<a href="#" class="image"><img src="{% static 'blog/images/pic08.jpg' %}" alt="" /></a>
+											<a href="#" class="image"><img src="{{ i.img.url }}" alt="" /></a>
 										</article>
 									</li>
-
+									{% endfor %}
 								</ul>
 							</section>
 
