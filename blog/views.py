@@ -25,5 +25,5 @@ def index(request):
 	return render(request,'blog/index.html', {'article' : article , 'toplast' : toplast})
 
 
-def login(request):
-	pass
+def contact(request):
+	return render(request,'blog/contact.html')
