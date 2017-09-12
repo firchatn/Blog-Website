@@ -36,4 +36,13 @@ class Article(models.Model):
 	class Meta:
 		ordering = ['-post_date']
 
+class Author(User):
+	pass
+
+class Admin(User):
+	pass
+
+class Visiteur(User):
+	pass
+
 

@@ -20,13 +20,28 @@
 						<h1><a href="#">News Blog</a></h1>
 						<nav class="links">
 							<ul>
-								<li><a href="{% url 'blog:index' %}">Acueill</a></li>
-								<li><a href="/admin/">Login</a></li>
-								<li><a href="#">Contact</a></li>
+
+									{% for i in catecory %}
+									<li><a href="?cat={{i.name}}">{{i.name}}</a></li>
+									{% endfor %}
 								
 							</ul>
-						</nav>
+
 					
+								</nav>
+
+	<nav class="main">
+	<ul>
+	{% if user.is_authenticated %}
+								<li><a class="fa-user" href="/admin/">Login</a></li>
+								<li><a class="fa-sign-out" href="/admin/logout">Login</a></li>
+    {% else %}
+    <li><a class="fa-sign-in" href="/admin/">Login</a></li>
+    {% endif %}
+								
+						</ul>
+						</nav>
+
 					</header>
 
 				<!-- Menu -->
@@ -132,9 +147,7 @@
 										</article>
 									</li>
 									{% endfor %}
-									{% for i in catecory %}
-									<li><a href="?cat={{i.name}}">{{i.name}}</a></li>
-									{% endfor %}
+									 
 									<li>
 									<a href="#" class="image featured"><img src="{% static 'blog/images/img1.jpg' %}" alt="" /></a>
 									</li>
