@@ -132,10 +132,14 @@
 										</article>
 									</li>
 									{% endfor %}
+									{% for i in catecory %}
+									<li><a href="?cat={{i.name}}">{{i.name}}</a></li>
+									{% endfor %}
 									<li>
 									<a href="#" class="image featured"><img src="{% static 'blog/images/img1.jpg' %}" alt="" /></a>
 									</li>
 								</ul>
+
 							</section>
 
 						<!-- About -->

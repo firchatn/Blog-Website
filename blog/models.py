@@ -18,8 +18,14 @@ class User(models.Model):
         return self.name
 
 
+class Catecory(models.Model):
+	name = models.CharField(max_length=20, primary_key=True)
+	def __str__(self):
+		return self.name
+
 class Article(models.Model):
 	autor = models.ForeignKey(User, on_delete=models.CASCADE)
+	catecory = models.ForeignKey(Catecory, on_delete=models.CASCADE)
 	title = models.CharField(max_length=20)
 	desc = models.CharField(max_length=300)
 	aboutnow = models.TextField()
@@ -27,3 +33,5 @@ class Article(models.Model):
 	post_date = models.DateTimeField('date published', auto_now_add=True, auto_now=False)
 	def __str__(self):
 		return self.title
+
+
