@@ -33,5 +33,7 @@ class Article(models.Model):
 	post_date = models.DateTimeField('date published', auto_now_add=True, auto_now=False)
 	def __str__(self):
 		return self.title
+	class Meta:
+		ordering = ['-post_date']
 
 
