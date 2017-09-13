@@ -22,8 +22,8 @@ def index(request):
 	except EmptyPage:
 		article = paginator.page(paginator.num_pages)
 		
+	# TODO: admin valid article before add it to the blog
 	# article = Article.objects.filter(isreviewed=True)
-	#article = Article.objects.all()
 	toplast = Article.objects.all()[:3]
 	return render(request,'blog/index.html', {'article' : article , 'toplast' : toplast, 'catecory' : catecory })
 
